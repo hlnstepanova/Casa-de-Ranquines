@@ -1,8 +1,8 @@
 const collaborators = [
   {
-    _id: 0,
+    _id: "0",
     name: "Adeilton Dos Santos Silva",
-    status: "ativado",
+    status: { _id: "5b21ca3eeb7f6fbccd471818", name: "ativado" },
     birthday: "1971-10-05",
     address: "Rua Alfredo Pitombeira Nº 101",
     reference: "Rua Da Auto Escola.",
@@ -20,9 +20,9 @@ const collaborators = [
     purpose: ""
   },
   {
-    _id: 1,
+    _id: "1",
     name: "Adelane Noemia Dos Santos Oliveira (linda)",
-    status: "ativado",
+    status: { _id: "5b21ca3eeb7f6fbccd471818", name: "ativado" },
     birthday: "1999-06-22",
     address: "Rua Luiz Clemente Vasconcelos , N°454 (casa Amarela).",
     reference: "Prox. A Casa Da Vadereis, Rua Dos Ônibus.",
@@ -39,9 +39,9 @@ const collaborators = [
     purpose: ""
   },
   {
-    _id: 2,
+    _id: "2",
     name: "Adelany Epifânio Da Silva",
-    status: "ativado",
+    status: { _id: "5b21ca3eeb7f6fbccd471818", name: "ativado" },
     birthday: "1966-07-05",
     address: "Conj. Padre Cícero, N°67.",
     reference:
@@ -59,9 +59,9 @@ const collaborators = [
     purpose: ""
   },
   {
-    _id: 3,
+    _id: "3",
     name: "Adeilda Cordeiro Lima Da Silva",
-    status: "ativado",
+    status: { _id: "5b21ca3eeb7f6fbccd471818", name: "ativado" },
     birthday: "1963-07-23",
     address: "R. Luiz Carlos Basto, 202.",
     reference: "Rua Do 5° Distrito.",
@@ -78,9 +78,9 @@ const collaborators = [
     purpose: ""
   },
   {
-    _id: 4,
+    _id: "4",
     name: "Adelmo Batista Farias",
-    status: "ativado",
+    status: { _id: "5b21ca3eeb7f6fbccd471818", name: "ativado" },
     birthday: "1954-12-09",
     address: "Rua A 33, Qd. A 33, Nº 518",
     reference: "Entrega Na Igreja",
@@ -97,9 +97,9 @@ const collaborators = [
     purpose: ""
   },
   {
-    _id: 5,
+    _id: "5",
     name: "Ademilde Silva De Lima",
-    status: "ativado",
+    status: { _id: "5b21ca3eeb7f6fbccd471818", name: "ativado" },
     birthday: "1951-10-18",
     address: "Rua B-49, Qd B-50, Nº",
     reference: "Rua Da Loteria",
@@ -116,9 +116,9 @@ const collaborators = [
     purpose: "Cozinha."
   },
   {
-    _id: 6,
+    _id: "6",
     name: "Aderval De Araujo Lima",
-    status: "ativado",
+    status: { _id: "5b21ca3eeb7f6fbccd471818", name: "ativado" },
     birthday: "1972-07-01",
     address: "R. Santa Rita N° 2000",
     reference:
@@ -137,9 +137,9 @@ const collaborators = [
   },
 
   {
-    _id: 316,
+    _id: "316",
     name: "Lituane Pinheiro Da Silva",
-    status: "ativado",
+    status: { _id: "5b21ca3eeb7f6fbccd471818", name: "ativado" },
     birthday: "1992-10-14",
     address: "Rua B 51, Quadra B 50, Nº 389.",
     reference: "Rua Do Antigo Mercadinho Pena Branca.",
@@ -156,9 +156,9 @@ const collaborators = [
     purpose: ""
   },
   {
-    _id: 317,
+    _id: "317",
     name: "Lucas Ferreira De Melo",
-    status: "ativado",
+    status: { _id: "5b21ca3eeb7f6fbccd471818", name: "ativado" },
     birthday: "1993-10-20",
     address: "Avenida Domingos Leite",
     reference: "Na Rua Do Hospital",
@@ -175,9 +175,9 @@ const collaborators = [
     purpose: ""
   },
   {
-    _id: 318,
+    _id: "318",
     name: "Lúcia Batista",
-    status: "ativado",
+    status: { _id: "5b21ca3eeb7f6fbccd471818", name: "ativado" },
     birthday: "1948-09-22",
     address: "Conj. Rua Palmeira, Bl. 3ª, Apto. 303.",
     reference: "Rua Do Bombeiro Resgate",
@@ -194,9 +194,9 @@ const collaborators = [
     purpose: "Cozinha"
   },
   {
-    _id: 319,
+    _id: "319",
     name: "Lúcia Maria Gomes De Lima",
-    status: "ativado",
+    status: { _id: "5b21ca3eeb7f6fbccd471818", name: "ativado" },
     birthday: "1965-03-07",
     address: "Conj. Osman Loureiro, Qd. D 7, N° 69.",
     reference:
@@ -214,9 +214,9 @@ const collaborators = [
     purpose: "Lanche Das Crianças"
   },
   {
-    _id: 320,
+    _id: "320",
     name: "Lucia Vilela Santos Texeira",
-    status: "ativado",
+    status: { _id: "5b21ca3eeb7f6fbccd471818", name: "ativado" },
     birthday: "1967-02-10",
     address: "Cond. Central Parque, Bl.12, Apt. 02.",
     reference:
@@ -235,9 +235,9 @@ const collaborators = [
     purpose: ""
   },
   {
-    _id: 321,
+    _id: "321",
     name: "Luciana Santos Rodrigues",
-    status: "ativado",
+    status: { _id: "5b21ca3eeb7f6fbccd471818", name: "ativado" },
     birthday: "1966-04-18",
     address: "Conjunto Vale Verde 1, Bloco 5, Apto. 104.",
     reference: "Mora Proximo Ao Espetinho Da Maria, Na Serraria",
@@ -254,9 +254,9 @@ const collaborators = [
     purpose: ""
   },
   {
-    _id: 322,
+    _id: "322",
     name: "Luciano Leite Espindola",
-    status: "ativado",
+    status: { _id: "5b21ca3eeb7f6fbccd471818", name: "ativado" },
     birthday: "1975-03-05",
     address: "Rua B 49, Quadra B 48, Nº 329.",
     reference: "Rua Da Padaria São Jorge",
@@ -273,9 +273,9 @@ const collaborators = [
     purpose: ""
   },
   {
-    _id: 323,
+    _id: "323",
     name: "Luciano Lourenço De Amorim",
-    status: "ativado",
+    status: { _id: "5b21ca3eeb7f6fbccd471818", name: "ativado" },
     birthday: "1961-05-26",
     address: "Rua A 48, Quadra A 49, Nº 328",
     reference: "Rua Antes Da Rua Que A Nadja Mora",
@@ -292,9 +292,9 @@ const collaborators = [
     purpose: ""
   },
   {
-    _id: 324,
+    _id: "324",
     name: "Luciene Guedes Soares",
-    status: "ativado",
+    status: { _id: "5b21ca3eeb7f6fbccd471818", name: "ativado" },
     birthday: "1970-12-19",
     address: "Av. Benedito Bentes, 367.",
     reference:
@@ -314,9 +314,9 @@ const collaborators = [
   },
 
   {
-    _id: 693,
+    _id: "693",
     name: "Paulo Ricardo De Andrade Lopes",
-    status: "desativado",
+    status: { _id: "5b21ca3eeb7f6fbccd471814", name: "desativado" },
     birthday: "1987-07-24",
     address: "Rua A-41, Qd A-41, Nº 134",
     reference: "Av Pratagy. Rua Do Ponto Da Fruta.",
@@ -334,9 +334,9 @@ const collaborators = [
     purpose: "Imagem De Santa Luiza"
   },
   {
-    _id: 694,
+    _id: "694",
     name: "Ramone Caroline Amorim Paranhos",
-    status: "desativado",
+    status: { _id: "5b21ca3eeb7f6fbccd471814", name: "desativado" },
     birthday: "1994-11-12",
     address: "Minador Do Lúcio",
     reference: "Posto Petrobrás",
@@ -353,9 +353,9 @@ const collaborators = [
     purpose: ""
   },
   {
-    _id: 695,
+    _id: "695",
     name: "Selma Cesária De Freitas Almeida",
-    status: "desativado",
+    status: { _id: "5b21ca3eeb7f6fbccd471814", name: "desativado" },
     birthday: "1967-06-29",
     address: "Av. Bela Vista, Qd. 34, N°22.",
     reference: "",
@@ -372,9 +372,9 @@ const collaborators = [
     purpose: ""
   },
   {
-    _id: 696,
+    _id: "696",
     name: "Selma Lopes",
-    status: "desativado",
+    status: { _id: "5b21ca3eeb7f6fbccd471814", name: "desativado" },
     birthday: "1962-12-04",
     address: "Minador Do Lúcio",
     reference: "Escola José Calado Cavalcante",
@@ -405,32 +405,33 @@ export function saveCollaborator(collaborator) {
     collaborators.find(c => c._id === collaborator._id) || {};
   collaboratorInDb.name = collaborator.name;
   collaboratorInDb.status = collaborator.status;
-  collaboratorInDb.birthday = collaborator.numberInStock;
-  collaboratorInDb.address = collaborator.dailyRentalRate;
-  collaboratorInDb.reference = collaborator.dailyRentalRate;
-  collaboratorInDb.neighborhood = collaborator.dailyRentalRate;
-  collaboratorInDb.city = collaborator.dailyRentalRate;
-  collaboratorInDb.state = collaborator.dailyRentalRate;
-  collaboratorInDb.phone = collaborator.dailyRentalRate;
-  collaboratorInDb.mobile = collaborator.dailyRentalRate;
-  collaboratorInDb.workphone = collaborator.dailyRentalRate;
-  collaboratorInDb.email = collaborator.dailyRentalRate;
-  collaboratorInDb.children = collaborator.dailyRentalRate;
-  collaboratorInDb.religion = collaborator.dailyRentalRate;
-  collaboratorInDb.collaborationDay = collaborator.dailyRentalRate;
-  collaboratorInDb.value = collaborator.dailyRentalRate;
-  collaboratorInDb.purpose = collaborator.dailyRentalRate;
+  collaboratorInDb.birthday = collaborator.birthday;
+  collaboratorInDb.address = collaborator.address;
+  collaboratorInDb.reference = collaborator.reference;
+  collaboratorInDb.neighborhood = collaborator.neighborhood;
+  collaboratorInDb.city = collaborator.city;
+  collaboratorInDb.state = collaborator.state;
+  collaboratorInDb.phone = collaborator.phone;
+  collaboratorInDb.mobile = collaborator.mobile;
+  collaboratorInDb.workPhone = collaborator.workPhone;
+  collaboratorInDb.email = collaborator.email;
+  collaboratorInDb.children = collaborator.children;
+  collaboratorInDb.religion = collaborator.religion;
+  collaboratorInDb.collaborationDay = collaborator.collaborationDay;
+  collaboratorInDb.value = collaborator.value;
+  collaboratorInDb.purpose = collaborator.purpose;
 
   if (!collaboratorInDb._id) {
-    collaboratorInDb._id = Date.now();
+    collaboratorInDb._id = Date.now().toString();
     collaborators.push(collaboratorInDb);
   }
 
   return collaboratorInDb;
 }
 
-export function deletecollaborator(id) {
+export function changeCollaboratorStatus(id) {
   let collaboratorInDb = collaborators.find(c => c._id === id);
-  collaborators.splice(collaborators.indexOf(collaboratorInDb), 1);
+  collaboratorInDb.status =
+    collaboratorInDb.status === "desativado" ? "ativado" : "desativado";
   return collaboratorInDb;
 }

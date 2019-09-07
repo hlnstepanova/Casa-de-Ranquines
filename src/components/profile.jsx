@@ -2,16 +2,14 @@ import React, { Component } from "react";
 import {
   getCollaborators,
   getCollaborator
-} from "../services/fakeCollaboratorsService";
+} from "../services/fakeCollaboratorService";
 
 class Profile extends Component {
   state = {
     items: getCollaborators(),
     selectedItemId: 4,
     headings: {
-      _id: "id",
       name: "Nome",
-      status: "Estado",
       birthday: "Data de Nascimento",
       address: "Endereço",
       reference: "Referência",
