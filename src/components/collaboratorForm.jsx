@@ -5,7 +5,7 @@ import {
   getCollaborator,
   saveCollaborator
 } from "../services/fakeCollaboratorService";
-import { getStatuses } from "../services/fakeStatusService";
+import { getStatuses, getAnswers } from "../services/fakeStatusService";
 
 class CollaboratorForm extends Form {
   state = {
@@ -22,19 +22,20 @@ class CollaboratorForm extends Form {
       mobile: "",
       workPhone: "",
       email: "",
-      children: false,
+      childrenId: "5b21ca3eeb7f6fbccd4718733",
       religion: "",
       collaborationDay: "",
       value: "",
       purpose: ""
     },
     statuses: [],
+    answers: [],
     errors: {}
   };
 
   schema = {
     _id: Joi.string(),
-    name: Joi.date()
+    name: Joi.string()
       .required()
       .label("Nome"),
     statusId: Joi.string()
@@ -46,7 +47,9 @@ class CollaboratorForm extends Form {
     address: Joi.string()
       .required()
       .label("Endereço"),
-    reference: Joi.string().label("Referência"),
+    reference: Joi.string()
+      .allow("")
+      .label("Referência"),
     neighborhood: Joi.string()
       .required()
       .label("Bairro"),
@@ -57,27 +60,41 @@ class CollaboratorForm extends Form {
       .required()
       .label("UF"),
     phone: Joi.string()
-      .required()
+      .allow("")
       .label("Telefone"),
-    mobile: Joi.string().label("Celular"),
-    workPhone: Joi.string().label("Telefone do trabalho"),
+    mobile: Joi.string()
+      .allow("")
+      .label("Celular"),
+    workPhone: Joi.string()
+      .allow("")
+      .label("Telefone do trabalho"),
     email: Joi.string()
       .email()
+      .allow("")
       .label("E-mail"),
-    children: Joi.boolean().label("Tem filhos?"),
-    religion: Joi.string().label("Religião"),
+    childrenId: Joi.string()
+      .allow("")
+      .label("Tem filhos?"),
+    religion: Joi.string()
+      .allow("")
+      .label("Religião"),
     collaborationDay: Joi.string()
       .required()
       .label("Dia de colaboração"),
     value: Joi.string()
       .required()
       .label("Valor"),
-    purpose: Joi.string().label("Destino de colaboração")
+    purpose: Joi.string()
+      .allow("")
+      .label("Destino de colaboração")
   };
 
   componentDidMount() {
     const statuses = getStatuses();
     this.setState({ statuses });
+
+    const answers = getAnswers();
+    this.setState({ answers });
 
     //get the movieId from router and check if it's new, otherwise populate the form
     const collaboratorId = this.props.match.params.id;
@@ -95,22 +112,26 @@ class CollaboratorForm extends Form {
     return {
       _id: collaborator._id,
       name: collaborator.name,
-      statusId: collaborator.status,
-      birthday: collaborator.birthday,
-      address: collaborator.address,
-      reference: collaborator.reference,
-      neighborhood: collaborator.neighborhood,
-      city: collaborator.city,
-      state: collaborator.state,
-      phone: collaborator.phone,
-      mobile: collaborator.mobile,
-      workPhone: collaborator.workPhone,
-      email: collaborator.email,
-      children: collaborator.children,
-      religion: collaborator.religion,
-      collaborationDay: collaborator.collaborationDay,
-      value: collaborator.value,
-      purpose: collaborator.purpose
+      statusId: collaborator.status._id,
+      birthday: collaborator.birthday ? collaborator.birthday : "",
+      address: collaborator.address ? collaborator.address : "",
+      reference: collaborator.reference ? collaborator.reference : "",
+      neighborhood: collaborator.neighborhood ? collaborator.neighborhood : "",
+      city: collaborator.city ? collaborator.city : "",
+      state: collaborator.state ? collaborator.state : "",
+      phone: collaborator.phone ? collaborator.phone : "",
+      mobile: collaborator.mobile ? collaborator.mobile : "",
+      workPhone: collaborator.workPhone ? collaborator.workPhone : "",
+      email: collaborator.email ? collaborator.email : "",
+      childrenId: collaborator.children
+        ? collaborator.children._id
+        : this.answers[3],
+      religion: collaborator.religion ? collaborator.religion : "",
+      collaborationDay: collaborator.collaborationDay
+        ? collaborator.collaborationDay
+        : "",
+      value: collaborator.value ? collaborator.value : "",
+      purpose: collaborator.purpose ? collaborator.purpose : ""
     };
   }
 
@@ -125,7 +146,7 @@ class CollaboratorForm extends Form {
         <h1>Cartão do Amigo Evangelizador</h1>
         <form onSubmit={this.handleSubmit}>
           {this.renderInput("name", "Nome")}
-          {this.renderSelect("status", "Estado", this.state.statuses)}
+          {this.renderSelect("statusId", "Estado", this.state.statuses)}
           {this.renderInput("birthday", "Anniversário", "date")}
           {this.renderInput("address", "Endereço")}
           {this.renderInput("reference", "Referência")}
@@ -136,7 +157,7 @@ class CollaboratorForm extends Form {
           {this.renderInput("mobile", "Celular")}
           {this.renderInput("workPhone", "Telefone do trabalho")}
           {this.renderInput("email", "E-mail", "email")}
-          {this.renderInput("children", "Filhos")}
+          {this.renderSelect("childrenId", "Filhos", this.state.answers)}
           {this.renderInput("religion", "Religião")}
           {this.renderInput("collaborationDay", "Dia de colaboração")}
           {this.renderInput("value", "Valor")}

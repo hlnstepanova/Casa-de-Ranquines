@@ -12,6 +12,8 @@ class Form extends Component {
   validate = () => {
     const options = { abortEarly: false };
     const { error } = Joi.validate(this.state.data, this.schema, options);
+    console.log("After: ", this.state.data);
+    console.log("Joi: ", error);
     if (!error) return null;
     const errors = {};
     for (let item of error.details) errors[item.path[0]] = item.message;
