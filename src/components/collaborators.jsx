@@ -45,7 +45,7 @@ class Collaborators extends Component {
       this.setState({ collaborators });
     } catch (ex) {
       if (ex.response && ex.response.status === 404)
-        toast.error("Operação não permitida.");
+        toast.error("Operação não permitida");
       this.setState({ collaborators });
     }
   };
