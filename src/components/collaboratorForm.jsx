@@ -23,7 +23,7 @@ class CollaboratorForm extends Form {
       state: "",
       phone: "",
       mobile: "",
-      workPhone: "",
+      workphone: "",
       email: "",
       childrenId: "5d8b8122bd992000168e0773",
       religion: "",
@@ -68,7 +68,7 @@ class CollaboratorForm extends Form {
     mobile: Joi.string()
       .allow("")
       .label("Celular"),
-    workPhone: Joi.string()
+    workphone: Joi.string()
       .allow("")
       .label("Telefone do trabalho"),
     email: Joi.string()
@@ -140,7 +140,7 @@ class CollaboratorForm extends Form {
       state: collaborator.state ? collaborator.state : "",
       phone: collaborator.phone ? collaborator.phone : "",
       mobile: collaborator.mobile ? collaborator.mobile : "",
-      workPhone: collaborator.workPhone ? collaborator.workPhone : "",
+      workphone: collaborator.workphone ? collaborator.workphone : "",
       email: collaborator.email ? collaborator.email : "",
       childrenId: collaborator.children ? collaborator.children._id : "",
       religion: collaborator.religion ? collaborator.religion : "",
