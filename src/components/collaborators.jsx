@@ -45,7 +45,7 @@ class Collaborators extends Component {
       await changeCollaboratorStatus(collaborator);
     } catch (ex) {
       if (ex.response && ex.response.status === 404)
-        toast.error("This collaborator has been deleted.");
+        toast.error("Operação não permitida.");
 
       collaborators[id].status =
         collaborators[id].status === "ativado" ? "desativado" : "ativado";

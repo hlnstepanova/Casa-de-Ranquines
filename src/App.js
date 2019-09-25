@@ -38,20 +38,20 @@ class App extends Component {
               path="/collaborators/:id"
               component={CollaboratorForm}
             />
-            <Route
+            <ProtectedRoute
               path="/collaborators"
               render={props => (
                 <Collaborators {...props} user={this.state.user} />
               )}
             />
-            <Route
+            <ProtectedRoute
               path="/anniversaries"
               render={props => (
                 <Anniversaries {...props} user={this.state.user} />
               )}
             />
             <Route path="/not-found" component={NotFound} />
-            <Redirect from="/" exact to="/collaborators" />
+            <Redirect from="/" exact to="/login" />
             <Redirect to="/not-found" />
           </Switch>
         </main>
