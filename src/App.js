@@ -51,7 +51,7 @@ class App extends Component {
               )}
             />
             <Route path="/not-found" component={NotFound} />
-            <Redirect from="/" exact to="/login" />
+            <Redirect from="/" exact to="/collaborators" />
             <Redirect to="/not-found" />
           </Switch>
         </main>
