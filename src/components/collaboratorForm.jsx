@@ -14,7 +14,7 @@ class CollaboratorForm extends Form {
   state = {
     data: {
       name: "",
-      statusId: "",
+      statusId: "5d8bbcd8694a2d0016104809",
       birthday: new Date(),
       address: "",
       reference: "",
@@ -41,9 +41,7 @@ class CollaboratorForm extends Form {
     name: Joi.string()
       .required()
       .label("Nome"),
-    statusId: Joi.string()
-      .required()
-      .label("Estado"),
+    statusId: Joi.string().label("Estado"),
     birthday: Joi.date()
       .required()
       .label("Anniversário"),
@@ -131,7 +129,9 @@ class CollaboratorForm extends Form {
     return {
       _id: collaborator._id,
       name: collaborator.name,
-      statusId: collaborator.status._id,
+      statusId: collaborator.status._id
+        ? collaborator.status._id
+        : "5d8bbcd8694a2d0016104809",
       birthday: collaborator.birthday ? collaborator.birthday : "",
       address: collaborator.address ? collaborator.address : "",
       reference: collaborator.reference ? collaborator.reference : "",
@@ -142,7 +142,9 @@ class CollaboratorForm extends Form {
       mobile: collaborator.mobile ? collaborator.mobile : "",
       workphone: collaborator.workphone ? collaborator.workphone : "",
       email: collaborator.email ? collaborator.email : "",
-      childrenId: collaborator.children ? collaborator.children._id : "",
+      childrenId: collaborator.children
+        ? collaborator.children._id
+        : "5d8bbcd8694a2d001610480d",
       religion: collaborator.religion ? collaborator.religion : "",
       collaborationDay: collaborator.collaborationDay
         ? collaborator.collaborationDay
