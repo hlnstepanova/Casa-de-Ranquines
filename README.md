@@ -4,6 +4,8 @@ A catholic NGO (Maceío, Brazil, that runs various projects helping poor familie
 
 ### Project
 
+Deployed on Heroku: https://casa-de-ranquines.herokuapp.com/
+
 This project's goal is to organize the internal administration of the NGO and facilitate its interaction with collaborators.
 All the profiles on NGO's donors were ineffectively stored in Word and Excel files, which complicated the resource management.
 This React application paired with a Node.js backend will bring more structure and control to the internal affairs of the NGO.
