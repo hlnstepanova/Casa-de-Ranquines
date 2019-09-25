@@ -28,9 +28,9 @@ export function saveCollaborator(collaborator) {
 export function changeCollaboratorStatus(collaborator) {
   const body = { ...collaborator };
   const statusId =
-    body.status._id === "5d8b8122bd992000168e076f"
-      ? "5d8b8122bd992000168e0770"
-      : "5d8b8122bd992000168e076f";
+    body.status._id === "5d8bbcd8694a2d0016104809"
+      ? "5d8bbcd8694a2d001610480a"
+      : "5d8bbcd8694a2d0016104809";
   const childrenId = body.children._id;
   delete body._id;
   delete body.status;
