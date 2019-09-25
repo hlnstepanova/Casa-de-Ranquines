@@ -18,6 +18,7 @@ export function saveCollaborator(collaborator) {
   if (collaborator._id) {
     const body = { ...collaborator };
     delete body._id;
+    console.log(body);
     return http.put(collaboratorUrl(collaborator._id), body);
   }
 
@@ -27,9 +28,9 @@ export function saveCollaborator(collaborator) {
 export function changeCollaboratorStatus(collaborator) {
   const body = { ...collaborator };
   const statusId =
-    body.status._id === "5d9622eafdd3ff26b8628179"
-      ? "5d9622eafdd3ff26b8628178"
-      : "5d9622eafdd3ff26b8628179";
+    body.status._id === "5d8b8122bd992000168e076f"
+      ? "5d8b8122bd992000168e0770"
+      : "5d8b8122bd992000168e076f";
   const childrenId = body.children._id;
   delete body._id;
   delete body.status;

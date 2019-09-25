@@ -37,7 +37,7 @@ class Collaborators extends Component {
     const collaborators = [...this.state.collaborators];
 
     try {
-      await changeCollaboratorStatus(collaborator);
+      const { data } = await changeCollaboratorStatus(collaborator);
       const id = collaborators.indexOf(collaborator);
       collaborators[id] = { ...collaborators[id] };
       collaborators[id].status.name =

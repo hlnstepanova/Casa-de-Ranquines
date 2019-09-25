@@ -15,7 +15,7 @@ class CollaboratorForm extends Form {
     data: {
       name: "",
       statusId: "",
-      birthday: new Date(),
+      birthday: "",
       address: "",
       reference: "",
       neighborhood: "",
@@ -25,7 +25,7 @@ class CollaboratorForm extends Form {
       mobile: "",
       workPhone: "",
       email: "",
-      childrenId: "5d94e26cc4704526b086f627",
+      childrenId: "5d8b8122bd992000168e0773",
       religion: "",
       collaborationDay: "",
       value: "",
