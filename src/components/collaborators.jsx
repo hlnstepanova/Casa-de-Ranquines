@@ -35,20 +35,17 @@ class Collaborators extends Component {
   handleStatusChange = async collaborator => {
     //desactivate
     const collaborators = [...this.state.collaborators];
-    const id = collaborators.indexOf(collaborator);
-    collaborators[id] = { ...collaborators[id] };
-    collaborators[id].status.name =
-      collaborators[id].status.name === "ativado" ? "desativado" : "ativado";
-    this.setState({ collaborators });
 
     try {
       await changeCollaboratorStatus(collaborator);
+      const id = collaborators.indexOf(collaborator);
+      collaborators[id] = { ...collaborators[id] };
+      collaborators[id].status.name =
+        collaborators[id].status.name === "ativado" ? "desativado" : "ativado";
+      this.setState({ collaborators });
     } catch (ex) {
       if (ex.response && ex.response.status === 404)
         toast.error("Operação não permitida.");
-
-      collaborators[id].status =
-        collaborators[id].status === "ativado" ? "desativado" : "ativado";
       this.setState({ collaborators });
     }
   };
