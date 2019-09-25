@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import Geocode from "react-geocode";
 
-Geocode.setApiKey("AIzaSyAS2HquoZHX5z4RAJgeQ30jZDxluNGjcW4");
+Geocode.setApiKey(process.env.REACT_APP_GOOGLE_KEY);
 
 export class MapContainer extends Component {
   state = {
@@ -72,5 +72,5 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyAS2HquoZHX5z4RAJgeQ30jZDxluNGjcW4"
+  apiKey: process.env.REACT_APP_GOOGLE_KEY
 })(MapContainer);
