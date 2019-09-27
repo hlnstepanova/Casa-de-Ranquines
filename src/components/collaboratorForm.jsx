@@ -160,10 +160,12 @@ class CollaboratorForm extends Form {
   };
 
   render() {
-    const selectedPlace = {
+    let selectedPlace = {
       name: this.state.data.name,
       address: this.state.data.address
     };
+
+    console.log("SelectedPlace", selectedPlace);
 
     return (
       <React.Fragment>
@@ -192,7 +194,9 @@ class CollaboratorForm extends Form {
             </form>
           </div>
           <div className="col">
-            <MapContainer selectedPlace={selectedPlace}></MapContainer>
+            <MapContainer
+              collaboratorId={this.props.match.params.id}
+            ></MapContainer>
           </div>
         </div>
       </React.Fragment>

@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import Geocode from "react-geocode";
+import { getCollaborator } from "../../services/collaboratorService";
 
 Geocode.setApiKey(process.env.REACT_APP_GOOGLE_KEY);
 
 export class MapContainer extends Component {
   state = {
-    selectedPlace: {
-      name: this.props.selectedPlace.name,
-      address: this.props.selectedPlace.address
-    },
+    collaboratorId: this.props.collaboratorId,
+    name: "",
+    address: "",
     location: { lat: -9.585044, lng: -35.761056 },
     activeMarker: {},
     showingInfoWindow: true
@@ -17,10 +17,14 @@ export class MapContainer extends Component {
 
   async componentDidMount() {
     try {
-      const response = await Geocode.fromAddress(
-        "Maceió, " + this.state.selectedPlace.address
+      let { data: collaborator } = await getCollaborator(
+        this.state.collaboratorId
       );
-      const location = response.results[0].geometry.location;
+      this.setState({ name: collaborator.name, address: collaborator.address });
+      let response = await Geocode.fromAddress(
+        "Maceió, " + collaborator.address
+      );
+      let location = response.results[0].geometry.location;
       this.setState({ location });
     } catch (error) {}
   }
@@ -38,8 +42,8 @@ export class MapContainer extends Component {
     });
 
   render() {
-    const { name, address } = this.state.selectedPlace;
-    const { location } = this.state;
+    let { name, address } = this.state;
+    let { location } = this.state;
 
     const style = {
       width: "100%",

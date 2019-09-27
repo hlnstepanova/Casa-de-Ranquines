@@ -19,10 +19,10 @@ const NavBar = ({ user }) => {
       </button>
       <div className="collapse navbar-collapse" id="navbarNav">
         <NavLink className="nav-item nav-link" to="/collaborators">
-          Collaboradores
+          Colaboradores
         </NavLink>
         <NavLink className="nav-item nav-link" to="/anniversaries">
-          Anniversarios
+          Aniversariantes
         </NavLink>
         {!user && (
           <React.Fragment>
