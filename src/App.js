@@ -5,6 +5,8 @@ import CollaboratorForm from "./components/collaboratorForm";
 import RegisterForm from "./components/registerForm";
 import Collaborators from "./components/collaborators";
 import Anniversaries from "./components/anniversaries";
+import NavBar from "./navBar";
+import NotFound from "./notFound";
 import LoginForm from "./components/loginForm";
 import Logout from "./components/logout";
 import ProtectedRoute from "./components/common/protectedRoute";
