@@ -13,7 +13,6 @@ import ProtectedRoute from "./components/common/protectedRoute";
 import auth from "./services/authService";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
-import NotFound from "./components/notFound";
 
 class App extends Component {
   state = {};
