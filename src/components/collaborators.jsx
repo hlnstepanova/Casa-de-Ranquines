@@ -29,7 +29,6 @@ class Collaborators extends Component {
     const statuses = [{ _id: "", name: "todo" }, ...data];
 
     const { data: collaborators } = await getCollaborators();
-    console.log(collaborators);
     this.setState({ collaborators, statuses });
   }
 
@@ -59,7 +58,6 @@ class Collaborators extends Component {
   };
 
   handleStatusSelect = status => {
-    console.log(status);
     this.setState({ selectedStatus: status, searchQuery: "", currentPage: 1 });
   };
 

@@ -25,7 +25,6 @@ class CollaboratorsTable extends Component {
       content: collaborator => (
         <button
           onClick={() => {
-            console.log("Clicked");
             this.props.onChangeStatus(collaborator);
           }}
           className={
