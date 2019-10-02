@@ -2,17 +2,18 @@ import React, { Component } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import CollaboratorForm from "./components/collaboratorForm";
-import NotFound from "./components/notFound";
 import RegisterForm from "./components/registerForm";
 import Collaborators from "./components/collaborators";
 import Anniversaries from "./components/anniversaries";
 import NavBar from "./components/navBar";
 import LoginForm from "./components/loginForm";
 import Logout from "./components/logout";
+import NotFound from "./components/notFound";
 import ProtectedRoute from "./components/common/protectedRoute";
 import auth from "./services/authService";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
+import NotFound from "./components/notFound";
 
 class App extends Component {
   state = {};
