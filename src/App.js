@@ -20,7 +20,6 @@ class App extends Component {
   componentDidMount() {
     const user = auth.getCurrentUser();
     this.setState({ user });
-    console.log(process.env);
   }
 
   render() {
