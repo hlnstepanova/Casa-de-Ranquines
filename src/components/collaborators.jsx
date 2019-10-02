@@ -29,6 +29,7 @@ class Collaborators extends Component {
     const statuses = [{ _id: "", name: "todo" }, ...data];
 
     const { data: collaborators } = await getCollaborators();
+    console.log(collaborators);
     this.setState({ collaborators, statuses });
   }
 
