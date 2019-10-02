@@ -25,7 +25,6 @@ class AnniversariesTable extends Component {
     if (anniversaries.length === 0)
       return <p>Não há anniversariantes neste mês.</p>;
 
-    console.log(anniversaries);
     return (
       <Table
         columns={this.columns}

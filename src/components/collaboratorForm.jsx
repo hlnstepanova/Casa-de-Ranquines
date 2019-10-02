@@ -163,8 +163,6 @@ class CollaboratorForm extends Form {
       address: this.state.data.address
     };
 
-    console.log(selectedPlace);
-
     return (
       <React.Fragment>
         <h1>Cartão do Amigo Evangelizador</h1>

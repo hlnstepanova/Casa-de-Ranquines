@@ -42,7 +42,6 @@ class Anniversaries extends Component {
   };
 
   handleMonthSelect = month => {
-    console.log("Month", month);
     this.setState({ selectedMonth: month.number, currentPage: 1 });
   };
 
@@ -68,8 +67,6 @@ class Anniversaries extends Component {
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
 
     const anniversaries = paginate(sorted, currentPage, pageSize);
-
-    console.log(anniversaries);
 
     return { totalCount: filtered.length, data: anniversaries };
   };

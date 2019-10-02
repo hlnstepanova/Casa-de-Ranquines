@@ -17,16 +17,12 @@ export class MapContainer extends Component {
 
   async componentDidMount() {
     try {
-      console.log("Address", "Maceió, " + this.state.selectedPlace.address);
       const response = await Geocode.fromAddress(
         "Maceió, " + this.state.selectedPlace.address
       );
       const location = response.results[0].geometry.location;
-      console.log("Location", location);
       this.setState({ location });
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   }
 
   onMarkerClick = (props, marker, e) =>
@@ -44,7 +40,6 @@ export class MapContainer extends Component {
   render() {
     const { name, address } = this.state.selectedPlace;
     const { location } = this.state;
-    console.log("State location", location);
 
     const style = {
       width: "100%",

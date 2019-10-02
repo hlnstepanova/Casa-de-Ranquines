@@ -36,8 +36,6 @@ export function changeCollaboratorStatus(collaborator) {
   delete body.children;
   body.statusId = statusId;
   body.childrenId = childrenId;
-  console.log("coll id: ", collaboratorUrl(collaborator._id));
-  console.log("coll body: ", body);
   return http.put(collaboratorUrl(collaborator._id), body);
 }
 
