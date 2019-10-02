@@ -5,7 +5,6 @@ import CollaboratorForm from "./components/collaboratorForm";
 import RegisterForm from "./components/registerForm";
 import Collaborators from "./components/collaborators";
 import Anniversaries from "./components/anniversaries";
-import NavBar from "./components/navBar";
 import LoginForm from "./components/loginForm";
 import Logout from "./components/logout";
 import NotFound from "./components/notFound";
