@@ -8,6 +8,7 @@ import Anniversaries from "./components/anniversaries";
 import LoginForm from "./components/loginForm";
 import Logout from "./components/logout";
 import NotFound from "./components/notFound";
+import NavBar from "./components/navBar";
 import ProtectedRoute from "./components/common/protectedRoute";
 import auth from "./services/authService";
 import "react-toastify/dist/ReactToastify.css";
