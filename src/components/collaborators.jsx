@@ -58,6 +58,7 @@ class Collaborators extends Component {
   };
 
   handleStatusSelect = status => {
+    console.log(status);
     this.setState({ selectedStatus: status, searchQuery: "", currentPage: 1 });
   };
 
@@ -115,12 +116,10 @@ class Collaborators extends Component {
       <div className="row">
         <div className="col-2">
           <ListGroup
-            items={this.state.statuses.map(function(a) {
-              const { _id, name } = a;
-              return { _id, name: name + "s" };
-            })}
+            items={this.state.statuses}
             selectedItem={this.state.selectedStatus}
             onItemSelect={this.handleStatusSelect}
+            path={this.props.location.pathname}
           />
           <Link
             to="/collaborators/new"
