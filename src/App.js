@@ -20,6 +20,7 @@ class App extends Component {
   componentDidMount() {
     const user = auth.getCurrentUser();
     this.setState({ user });
+    console.log(process.env.REACT_APP_API_URL);
   }
 
   render() {
