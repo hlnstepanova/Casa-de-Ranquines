@@ -42,6 +42,7 @@ class Anniversaries extends Component {
   };
 
   handleMonthSelect = month => {
+    console.log("Month", month);
     this.setState({ selectedMonth: month.number, currentPage: 1 });
   };
 
@@ -60,8 +61,8 @@ class Anniversaries extends Component {
 
     let filtered = allCollaborators.filter(
       c =>
-        c.status._id === "5b21ca3eeb7f6fbccd471818" &&
-        new Date(c.birthday).getMonth() === this.state.selectedMonth
+        c.status.name === "ativado" &&
+        new Date(c.birthday).getMonth() === selectedMonth
     );
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);

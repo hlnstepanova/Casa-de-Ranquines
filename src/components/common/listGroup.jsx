@@ -4,7 +4,8 @@ const ListGroup = ({
   valueProperty,
   items,
   onItemSelect,
-  selectedItem
+  selectedItem,
+  path
 }) => {
   return (
     <ul className="list-group">
@@ -18,7 +19,9 @@ const ListGroup = ({
               : "list-group-item"
           }
         >
-          {item[textProperty]}
+          {path === "/collaborators"
+            ? item[textProperty] + "s"
+            : item[textProperty]}
         </li>
       ))}
     </ul>
