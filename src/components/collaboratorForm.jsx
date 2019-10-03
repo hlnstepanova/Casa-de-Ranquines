@@ -1,6 +1,7 @@
 import React from "react";
 import Form from "./common/form";
 import Joi from "joi-browser";
+import MapContainer from "./common/mapContainer";
 import {
   getCollaborator,
   saveCollaborator
@@ -12,7 +13,7 @@ class CollaboratorForm extends Form {
     data: {
       name: "",
       statusId: "",
-      birthday: "",
+      birthday: new Date(),
       address: "",
       reference: "",
       neighborhood: "",
@@ -123,9 +124,7 @@ class CollaboratorForm extends Form {
       mobile: collaborator.mobile ? collaborator.mobile : "",
       workPhone: collaborator.workPhone ? collaborator.workPhone : "",
       email: collaborator.email ? collaborator.email : "",
-      childrenId: collaborator.children
-        ? collaborator.children._id
-        : this.answers[3],
+      childrenId: collaborator.children ? collaborator.children._id : "",
       religion: collaborator.religion ? collaborator.religion : "",
       collaborationDay: collaborator.collaborationDay
         ? collaborator.collaborationDay
@@ -141,30 +140,44 @@ class CollaboratorForm extends Form {
   };
 
   render() {
+    const selectedPlace = {
+      name: this.state.data.name,
+      address: this.state.data.address
+    };
+
+    console.log(selectedPlace);
+
     return (
-      <div>
+      <React.Fragment>
         <h1>Cartão do Amigo Evangelizador</h1>
-        <form onSubmit={this.handleSubmit}>
-          {this.renderInput("name", "Nome")}
-          {this.renderSelect("statusId", "Estado", this.state.statuses)}
-          {this.renderInput("birthday", "Anniversário", "date")}
-          {this.renderInput("address", "Endereço")}
-          {this.renderInput("reference", "Referência")}
-          {this.renderInput("neighborhood", "Bairro")}
-          {this.renderInput("city", "Cidade")}
-          {this.renderInput("state", "Estado")}
-          {this.renderInput("phone", "Telefone")}
-          {this.renderInput("mobile", "Celular")}
-          {this.renderInput("workPhone", "Telefone do trabalho")}
-          {this.renderInput("email", "E-mail", "email")}
-          {this.renderSelect("childrenId", "Filhos", this.state.answers)}
-          {this.renderInput("religion", "Religião")}
-          {this.renderInput("collaborationDay", "Dia de colaboração")}
-          {this.renderInput("value", "Valor")}
-          {this.renderInput("purpose", "Destino de colaboração")}
-          {this.renderButton("Salvar")}
-        </form>
-      </div>
+        <div className="row">
+          <div className="col">
+            <form onSubmit={this.handleSubmit}>
+              {this.renderInput("name", "Nome")}
+              {this.renderSelect("statusId", "Estado", this.state.statuses)}
+              {this.renderInput("birthday", "Anniversário", "date")}
+              {this.renderInput("address", "Endereço")}
+              {this.renderInput("reference", "Referência")}
+              {this.renderInput("neighborhood", "Bairro")}
+              {this.renderInput("city", "Cidade")}
+              {this.renderInput("state", "Estado")}
+              {this.renderInput("phone", "Telefone")}
+              {this.renderInput("mobile", "Celular")}
+              {this.renderInput("workPhone", "Telefone do trabalho")}
+              {this.renderInput("email", "E-mail", "email")}
+              {this.renderSelect("childrenId", "Filhos", this.state.answers)}
+              {this.renderInput("religion", "Religião")}
+              {this.renderInput("collaborationDay", "Dia de colaboração")}
+              {this.renderInput("value", "Valor")}
+              {this.renderInput("purpose", "Destino de colaboração")}
+              {this.renderButton("Salvar")}
+            </form>
+          </div>
+          <div className="col">
+            <MapContainer selectedPlace={selectedPlace}></MapContainer>
+          </div>
+        </div>
+      </React.Fragment>
     );
   }
 }
