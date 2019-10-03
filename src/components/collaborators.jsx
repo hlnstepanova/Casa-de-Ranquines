@@ -20,7 +20,7 @@ class Collaborators extends Component {
     pageSize: 5,
     searchQuery: "",
     selectedStatus: null,
-    sortColumn: { path: "title", order: "asc" }
+    sortColumn: { path: "name", order: "asc" }
   };
 
   componentDidMount() {
@@ -103,7 +103,10 @@ class Collaborators extends Component {
       <div className="row">
         <div className="col-3">
           <ListGroup
-            items={this.state.statuses}
+            items={this.state.statuses.map(function(a) {
+              const { _id, name } = a;
+              return { _id, name: name + "s" };
+            })}
             selectedItem={this.state.selectedStatus}
             onItemSelect={this.handleStatusSelect}
           />
