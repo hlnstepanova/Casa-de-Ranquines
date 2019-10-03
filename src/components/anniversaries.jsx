@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import AnniversariesTable from "./anniversariesTable.jsx";
 import ListGroup from "./common/listGroup";
 import Pagination from "./common/pagination";
-import { getCollaborators } from "../services/fakeCollaboratorService";
+import { getCollaborators } from "../services/collaboratorService";
 import { paginate } from "../utils/paginate";
 import _ from "lodash";
 
@@ -16,7 +16,7 @@ class Anniversaries extends Component {
     sortColumn: { path: "birthday", order: "asc" }
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     const months = [
       { name: "janeiro", number: 0 },
       { name: "fevereiro", number: 1 },
@@ -32,7 +32,9 @@ class Anniversaries extends Component {
       { name: "dezembro", number: 11 }
     ];
 
-    this.setState({ collaborators: getCollaborators(), months });
+    const { data: collaborators } = await getCollaborators();
+
+    this.setState({ collaborators, months });
   }
 
   handlePageChange = page => {

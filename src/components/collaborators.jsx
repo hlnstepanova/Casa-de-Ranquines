@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import CollaboratorsTable from "./collaboratorsTable.jsx";
 import ListGroup from "./common/listGroup";
 import Pagination from "./common/pagination";
 import {
   getCollaborators,
   changeCollaboratorStatus
-} from "../services/fakeCollaboratorService";
-import { getStatuses } from "../services/fakeStatusService";
+} from "../services/collaboratorService";
+import { getStatuses } from "../services/statusService";
 import { paginate } from "../utils/paginate";
 import _ from "lodash";
 import SearchBox from "./common/searchBox";
@@ -17,28 +18,39 @@ class Collaborators extends Component {
     collaborators: [],
     statuses: [],
     currentPage: 1,
-    pageSize: 5,
+    pageSize: 40,
     searchQuery: "",
     selectedStatus: null,
     sortColumn: { path: "name", order: "asc" }
   };
 
-  componentDidMount() {
-    const statuses = [{ _id: "", name: "todo" }, ...getStatuses()];
+  async componentDidMount() {
+    const { data } = await getStatuses();
+    const statuses = [{ _id: "", name: "todo" }, ...data];
 
-    this.setState({ collaborators: getCollaborators(), statuses });
+    const { data: collaborators } = await getCollaborators();
+    this.setState({ collaborators, statuses });
   }
 
-  handleStatusChange = collaborator => {
+  handleStatusChange = async collaborator => {
     //desactivate
     const collaborators = [...this.state.collaborators];
     const id = collaborators.indexOf(collaborator);
     collaborators[id] = { ...collaborators[id] };
-    collaborators[id].status =
-      collaborators[id].status === "ativado" ? "desativado" : "ativado";
+    collaborators[id].status.name =
+      collaborators[id].status.name === "ativado" ? "desativado" : "ativado";
     this.setState({ collaborators });
 
-    changeCollaboratorStatus(collaborator._id);
+    try {
+      await changeCollaboratorStatus(collaborator);
+    } catch (ex) {
+      if (ex.response && ex.response.status === 404)
+        toast.error("This collaborator has been deleted.");
+
+      collaborators[id].status =
+        collaborators[id].status === "ativado" ? "desativado" : "ativado";
+      this.setState({ collaborators });
+    }
   };
 
   handlePageChange = page => {
@@ -101,7 +113,7 @@ class Collaborators extends Component {
 
     return (
       <div className="row">
-        <div className="col-3">
+        <div className="col-2">
           <ListGroup
             items={this.state.statuses.map(function(a) {
               const { _id, name } = a;
