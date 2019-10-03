@@ -11,7 +11,7 @@ export function getCollaborators() {
   return http.get(apiEndpoint);
 }
 
-export function getCollaborator(id) {
+export function getCollaborator(collaboratorId) {
   return http.get(collaboratorUrl(collaboratorId));
 }
 
@@ -25,11 +25,21 @@ export function saveCollaborator(collaborator) {
   return http.post(apiEndpoint, collaborator);
 }
 
-export function changeCollaboratorStatus(id) {
-  let collaboratorInDb = collaborators.find(c => c._id === id);
-  collaboratorInDb.status =
-    collaboratorInDb.status === "desativado" ? "ativado" : "desativado";
-  return collaboratorInDb;
+export function changeCollaboratorStatus(collaborator) {
+  const body = { ...collaborator };
+  const statusId =
+    body.status._id === "5d9622eafdd3ff26b8628179"
+      ? "5d9622eafdd3ff26b8628178"
+      : "5d9622eafdd3ff26b8628179";
+  const childrenId = body.children._id;
+  delete body._id;
+  delete body.status;
+  delete body.children;
+  body.statusId = statusId;
+  body.childrenId = childrenId;
+  console.log("coll id: ", collaboratorUrl(collaborator._id));
+  console.log("coll body: ", body);
+  return http.put(collaboratorUrl(collaborator._id), body);
 }
 
 export function deleteMovie(collaboratorId) {

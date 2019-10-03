@@ -5,8 +5,10 @@ import MapContainer from "./common/mapContainer";
 import {
   getCollaborator,
   saveCollaborator
-} from "../services/fakeCollaboratorService";
-import { getStatuses, getAnswers } from "../services/fakeStatusService";
+} from "../services/collaboratorService";
+import { getStatuses } from "../services/statusService";
+import { getAnswers } from "../services/answerService";
+import { getCollaborators } from "./../services/collaboratorService";
 
 class CollaboratorForm extends Form {
   state = {
@@ -23,7 +25,7 @@ class CollaboratorForm extends Form {
       mobile: "",
       workPhone: "",
       email: "",
-      childrenId: "5b21ca3eeb7f6fbccd4718733",
+      childrenId: "5d94e26cc4704526b086f627",
       religion: "",
       collaborationDay: "",
       value: "",
@@ -90,22 +92,38 @@ class CollaboratorForm extends Form {
       .label("Destino de colaboração")
   };
 
-  componentDidMount() {
-    const statuses = getStatuses();
+  async populateStatuses() {
+    const { data: statuses } = await getStatuses();
     this.setState({ statuses });
+  }
 
-    const answers = getAnswers();
+  async populateCollaborators() {
+    const { data: collaborators } = await getCollaborators();
+    this.setState({ collaborators });
+  }
+
+  async populateAnswers() {
+    const { data: answers } = await getAnswers();
     this.setState({ answers });
+  }
 
-    //get the movieId from router and check if it's new, otherwise populate the form
-    const collaboratorId = this.props.match.params.id;
-    if (collaboratorId === "new") return;
+  async populateCollaborator() {
+    try {
+      const collaboratorId = this.props.match.params.id;
+      if (collaboratorId === "new") return;
 
-    //check if such id exists and if does, populate the form
-    //return - because replace doesn't guarantee the rest of the code is stopped
-    const collaborator = getCollaborator(collaboratorId);
-    if (!collaborator) return this.props.history.replace("/not-found");
-    this.setState({ data: this.mapToViewModel(collaborator) });
+      const { data: collaborator } = await getCollaborator(collaboratorId);
+      this.setState({ data: this.mapToViewModel(collaborator) });
+    } catch (ex) {
+      if (ex.response && ex.response.status === 404)
+        this.props.history.replace("/not-found");
+    }
+  }
+
+  async componentDidMount() {
+    await this.populateStatuses();
+    await this.populateAnswers();
+    await this.populateCollaborator();
   }
 
   //get only necessary parts of the movie object
@@ -134,8 +152,8 @@ class CollaboratorForm extends Form {
     };
   }
 
-  doSubmit = () => {
-    saveCollaborator(this.state.data);
+  doSubmit = async () => {
+    await saveCollaborator(this.state.data);
     this.props.history.push("/collaborators");
   };
 

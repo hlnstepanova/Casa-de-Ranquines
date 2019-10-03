@@ -24,7 +24,10 @@ class CollaboratorsTable extends Component {
       key: "changeStatus",
       content: collaborator => (
         <button
-          onClick={() => this.props.onChangeStatus(collaborator)}
+          onClick={() => {
+            console.log("Clicked");
+            this.props.onChangeStatus(collaborator);
+          }}
           className={
             collaborator.status.name === "desativado"
               ? "btn btn-success btn-sm"
@@ -39,7 +42,6 @@ class CollaboratorsTable extends Component {
   render() {
     const { collaborators, sortColumn, onSort } = this.props;
 
-    console.log(collaborators);
     return (
       <Table
         columns={this.columns}

@@ -1,33 +1,63 @@
-import React from "react";
-import "./App.css";
+import React, { Component } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import CollaboratorForm from "./components/collaboratorForm";
-import LoginForm from "./components/common/loginForm";
-import NotFound from "./components/notfound";
+import NotFound from "./components/notFound";
 import RegisterForm from "./components/registerForm";
 import Collaborators from "./components/collaborators";
 import Anniversaries from "./components/anniversaries";
-import NavBar from "./components/navbar";
+import NavBar from "./components/navBar";
+import LoginForm from "./components/loginForm";
+import Logout from "./components/logout";
+import ProtectedRoute from "./components/common/protectedRoute";
+import auth from "./services/authService";
+import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
 
-function App() {
-  return (
-    <React.Fragment>
-      <NavBar />
-      <main className="container">
-        <Switch>
-          <Route path="/collaborators/:id" component={CollaboratorForm}></Route>
-          <Route path="/collaborators/new" component={CollaboratorForm}></Route>
-          <Route path="/login" component={LoginForm}></Route>
-          <Route path="/collaborators" component={Collaborators}></Route>
-          <Route path="/anniversaries" component={Anniversaries}></Route>
-          <Route path="/not-found" component={NotFound}></Route>
-          <Route path="/register" component={RegisterForm}></Route>
-          <Redirect from="/" to="/collaborators" />
-          <Redirect to="/not-found" />
-        </Switch>
-      </main>
-    </React.Fragment>
-  );
+class App extends Component {
+  state = {};
+
+  componentDidMount() {
+    const user = auth.getCurrentUser();
+    this.setState({ user });
+  }
+
+  render() {
+    const { user } = this.state;
+
+    return (
+      <React.Fragment>
+        <ToastContainer />
+        <NavBar user={user} />
+        <main className="container">
+          <Switch>
+            <Route path="/register" component={RegisterForm} />
+            <Route path="/login" component={LoginForm} />
+            <Route path="/logout" component={Logout} />
+            <ProtectedRoute
+              path="/collaborators/:id"
+              component={CollaboratorForm}
+            />
+            <Route
+              path="/collaborators"
+              render={props => (
+                <Collaborators {...props} user={this.state.user} />
+              )}
+            />
+            <Route
+              path="/anniversaries"
+              render={props => (
+                <Anniversaries {...props} user={this.state.user} />
+              )}
+            />
+            <Route path="/not-found" component={NotFound} />
+            <Redirect from="/" exact to="/collaborators" />
+            <Redirect to="/not-found" />
+          </Switch>
+        </main>
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;
